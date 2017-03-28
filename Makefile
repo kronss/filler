@@ -18,7 +18,8 @@ NAME = filler
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 
-OBJECT = filler.o \
+OBJECT = 	filler.o \
+			error_filler.o
 
 .PHONY: all clean fclean re bug debug
 

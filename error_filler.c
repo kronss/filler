@@ -1,59 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   error_filler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/28 21:12:25 by ochayche          #+#    #+#             */
-/*   Updated: 2017/03/28 21:12:26 by ochayche         ###   ########.fr       */
+/*   Created: 2017/03/28 23:11:48 by ochayche          #+#    #+#             */
+/*   Updated: 2017/03/28 23:11:48 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	write
-**	read
-**	malloc
-**	free
-**	perror
-**	strerror
-*/
+#include "filler.h"
 
-#ifndef FILLER_H
-# define FILLER_H
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-
-typedef	struct			s_block
+void			error_filler(char *str)
 {
-	char 				player;
-	char				ai;
-
-	int					max_y;
-	int					max_x;
-	char				**map;
-
-
-
-}				t_block;
-
-
-
-
-void			error_filler(char *str);
-
-
-
-
-
-
-
-
-
-
-
-#endif
+	
+}
