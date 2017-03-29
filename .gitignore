@@ -1,4 +1,4 @@
 *.o
 a.out
 ._*
-.DS_*
+.DS_Store
