@@ -39,13 +39,24 @@ typedef	struct			s_block
 
 
 
-}				t_block;
+	int 				ty;
+	int					tx;
+	char				**token;
 
 
 
 
-void			error_filler(char *str);
 
+	char				*line;
+
+
+}						t_block;
+
+
+
+
+// void			error_filler(char *str);
+void					read_token_size(t_block *block);
 
 
 

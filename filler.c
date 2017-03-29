@@ -14,7 +14,7 @@
 
 static void					init_player(t_block *block)
 {
-	char		*line;
+	char 	*line;
 
 	get_next_line(STDIN, &line);
 	if (!ft_strncmp("$$$ exec p1 :", line, 13))
@@ -30,7 +30,7 @@ static void					init_player(t_block *block)
 	ft_strdel(&line);
 }
 
-void						init_max_size(t_block *block)
+void						read_map_max_size(t_block *block)
 {
 	int			i;
 	char		*line;
@@ -57,21 +57,83 @@ void						create_map(t_block *block, int max_y, int max_x)
 		perror("allocation error");
 	while (j < max_y)
 	{
-		if (!(block->map[j] = (char *)malloc(sizeof(char) * (max_x + 1))))
+		if (!(block->map[j] = ft_strnew(max_x + 1)))
 			perror("allocation error");
 		block->map[j][max_x] = '\0';
 		j++;
 	}
 	(block->map)[j] = NULL;
-	// printf("y%d * x%d\n", max_y, max_x);
+	printf("y%d * x%d\n", max_y, max_x);
 }
+
+void 						skip_line_plateau(char **line)
+{
+	if (ft_strstr(*line, "Plateau"))
+	{
+		ft_strdel(line);
+		get_next_line(STDIN, line);
+		ft_strdel(line);
+	}
+	// get_next_line(STDIN, line);
+	// ft_strdel(line);
+}
+
+void						read_map(t_block *block, int max_y, int max_x, char ***map)
+{
+	int j;
+	int i;
+	int k;
+	char *line;
+
+	j = 0;
+	while (j < block->max_y)
+	{
+		k = 0;
+		get_next_line(STDIN, &line);
+		while (!strchr(".OXox", line[k]))
+			k++;
+		i = 0;
+		while (i < block->max_x)
+		{
+			(*map)[j][i] = line[k];
+			i++;
+			k++;
+		}
+		j++;
+		ft_strdel(&line);
+	}
+}
+
+
 
 int							main(void)
 {
 	t_block		block;
 
+	// int x;
+	// int y = 0;
+
 	init_player(&block);
-	init_max_size(&block);
+	read_map_max_size(&block);
 	create_map(&block, block.max_y, block.max_x);
+	while ((get_next_line(STDIN, &block.line) > 0))
+	{
+		skip_line_plateau(&block.line);
+		read_map(&block, block.max_y, block.max_x, &block.map);
+		read_token_size(&block);
+		
+	}
+
+
+
+
+
+
+	// 	y = 0;
+	// 	while (y < block.max_y)
+	// {
+	// 	printf("%s\n", block.map[y]);
+	// 	y++;
+	// }
 	return (0);
 }
