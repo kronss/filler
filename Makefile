@@ -19,7 +19,9 @@ NAME = filler
 INCL = libft/libft.a ft_printf/libftprintf.a
 
 OBJECT = 	filler.o \
+			read_map.o \
 			read_token_size.o \
+			player_step.o \
 			error_filler.o
 
 .PHONY: all clean fclean re bug debug
@@ -49,10 +51,10 @@ r: all
 	./$(NAME) $(TEST)
 
 bug:
-	gcc -g $(INCL)
+	gcc -g filler.c read_map.c read_token_size.c player_step.c error_filler.c $(INCL)
 
 debug: bug
-	lldb -- $(NAME)
+	lldb -- ./resources/filler_vm -p1 a.out -p2 resources/players/champely.filler -f  maps/map00 
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./

@@ -30,13 +30,15 @@
 
 typedef	struct			s_block
 {
-	char 				player;
+	char				player;
+	char				player1;
 	char				ai;
+	char				ai1;
 
 	int					max_y;
 	int					max_x;
 	char				**map;
-
+	int 				**priority;
 
 
 	int 				ty;
@@ -44,9 +46,8 @@ typedef	struct			s_block
 	char				**token;
 
 
-	int					y;
-	int					x;
-
+	int					step_y;
+	int					step_x;
 
 	char				*line;
 
@@ -57,8 +58,10 @@ typedef	struct			s_block
 
 
 // void			error_filler(char *str);
+void					skip_line_plateau(char **line);
+void					read_map(t_block *block, int max_y, int max_x);
 void					read_token_size(t_block *block);
-
+void					player_step(t_block *block);
 
 
 

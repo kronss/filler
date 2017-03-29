@@ -19,18 +19,22 @@ static void					init_player(t_block *block)
 	get_next_line(STDIN, &line);
 	if (!ft_strncmp("$$$ exec p1 :", line, 13))
 	{
+		// printf("123\n");
 		block->player = 'O';
 		block->ai = 'X';
 	}
 	else
 	{
+		// printf("321\n");
 		block->player = 'X';
 		block->ai = 'O';
 	}
 	ft_strdel(&line);
+	get_next_line(STDIN, &line);
+	ft_strdel(&line);
 }
 
-void						read_map_max_size(t_block *block)
+static void					read_map_max_size(t_block *block)
 {
 	int			i;
 	char		*line;
@@ -48,7 +52,7 @@ void						read_map_max_size(t_block *block)
 	ft_strdel(&line);
 }
 
-void						create_map(t_block *block, int max_y, int max_x)
+static void					create_map(t_block *block, int max_y, int max_x)
 {
 	int			j;
 
@@ -66,7 +70,7 @@ void						create_map(t_block *block, int max_y, int max_x)
 	//printf("y%d * x%d\n", max_y, max_x);
 }
 
-void						create_map_priority(&block, block.max_y, block.max_x)
+static void					create_map_priority(t_block *block, int max_y, int max_x)
 {
 	int 		j;
 
@@ -81,89 +85,13 @@ void						create_map_priority(&block, block.max_y, block.max_x)
 	}
 }
 
-
-void 						skip_line_plateau(char **line)
-{
-	if (ft_strstr(*line, "Plateau"))
-	{
-		ft_strdel(line);
-		get_next_line(STDIN, line);
-		ft_strdel(line);
-	}
-	// get_next_line(STDIN, line);
-	// ft_strdel(line);
-}
-
-void						read_map(t_block *block, int max_y, int max_x)
-{
-	int j;
-	int i;
-	int k;
-	char *line;
-
-	j = 0;
-	while (j < block->max_y)
-	{
-		k = 0;
-		get_next_line(STDIN, &line);
-		while (!strchr(".OXox", line[k]))
-			k++;
-		i = 0;
-		while (i < block->max_x)
-		{
-			(block->map)[j][i] = line[k];
-			(block->priority)[j][i] = MAX_INT;
-			i++;
-			k++;
-		}
-		j++;
-		ft_strdel(&line);
-	}
-}
-
-void	find_way(t_block *block)
-{
-	int j;
-	int i;
-
-	j = 0;
-	while (j < block->max_y)
-	{
-		i = 0;
-		while (i < block->max_x)
-		{
-			if (block->map[y][x] == block->ai)
-				recalc_priority(block, j, i);
-			i++;
-		}
-		j++;
-	}
-}
-
-void	player_step(t_block *block)
-{
-	int 		j;
-	int 		i;
-
-	find_way(block);
-	while ()
-	{
-		while ()
-		{
-
-
-		}
-
-	}
-	ft_printf("%d %d\n", )
-}
-
 int							main(void)
 {
+	perror("allocation error");
 	t_block		block;
 
-	// int x;
-	// int y = 0;
+	int x;
+	int y = 0;
 
 	init_player(&block);
 	read_map_max_size(&block);
@@ -172,8 +100,21 @@ int							main(void)
 	while ((get_next_line(STDIN, &block.line) > 0))
 	{
 		skip_line_plateau(&block.line);
-		read_map(&block, block.max_y, block.max_x, &block.map);
+		read_map(&block, block.max_y, block.max_x);
 		read_token_size(&block);
+		// y = 0;
+		// while (y < block.max_y)
+		// {
+		// 	printf("%s\n", block.map[y]);
+		// 	y++;
+		// }
+		// y = 0;
+		// while (y < block.ty)
+		// {
+		// 	printf("%s\n", block.token[y]);
+		// 	y++;
+		// }
+
 		player_step(&block);
 
 	}
@@ -183,11 +124,6 @@ int							main(void)
 
 
 
-	// 	y = 0;
-	// 	while (y < block.max_y)
-	// {
-	// 	printf("%s\n", block.map[y]);
-	// 	y++;
-	// }
+
 	return (0);
 }
