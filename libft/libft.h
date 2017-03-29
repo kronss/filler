@@ -21,6 +21,8 @@
 # define ABS(x)	((x < 0) ? -(x) : (x))
 # define STDIN	0
 # define STDOUT	1
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 typedef struct		s_list
 {

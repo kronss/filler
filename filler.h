@@ -44,7 +44,8 @@ typedef	struct			s_block
 	char				**token;
 
 
-
+	int					y;
+	int					x;
 
 
 	char				*line;

@@ -63,8 +63,24 @@ void						create_map(t_block *block, int max_y, int max_x)
 		j++;
 	}
 	(block->map)[j] = NULL;
-	printf("y%d * x%d\n", max_y, max_x);
+	//printf("y%d * x%d\n", max_y, max_x);
 }
+
+void						create_map_priority(&block, block.max_y, block.max_x)
+{
+	int 		j;
+
+	j = 0;
+	if (!(block->priority = (int **)malloc(sizeof(int *) * (max_y))))
+		perror("allocation error");
+	while (j < max_y)
+	{
+		if (!(block->priority[j] = (int *)malloc(sizeof(int) * (max_x))))
+			perror("allocation error");
+		j++;
+	}
+}
+
 
 void 						skip_line_plateau(char **line)
 {
@@ -78,7 +94,7 @@ void 						skip_line_plateau(char **line)
 	// ft_strdel(line);
 }
 
-void						read_map(t_block *block, int max_y, int max_x, char ***map)
+void						read_map(t_block *block, int max_y, int max_x)
 {
 	int j;
 	int i;
@@ -95,7 +111,8 @@ void						read_map(t_block *block, int max_y, int max_x, char ***map)
 		i = 0;
 		while (i < block->max_x)
 		{
-			(*map)[j][i] = line[k];
+			(block->map)[j][i] = line[k];
+			(block->priority)[j][i] = MAX_INT;
 			i++;
 			k++;
 		}
@@ -104,7 +121,42 @@ void						read_map(t_block *block, int max_y, int max_x, char ***map)
 	}
 }
 
+void	find_way(t_block *block)
+{
+	int j;
+	int i;
 
+	j = 0;
+	while (j < block->max_y)
+	{
+		i = 0;
+		while (i < block->max_x)
+		{
+			if (block->map[y][x] == block->ai)
+				recalc_priority(block, j, i);
+			i++;
+		}
+		j++;
+	}
+}
+
+void	player_step(t_block *block)
+{
+	int 		j;
+	int 		i;
+
+	find_way(block);
+	while ()
+	{
+		while ()
+		{
+
+
+		}
+
+	}
+	ft_printf("%d %d\n", )
+}
 
 int							main(void)
 {
@@ -116,12 +168,14 @@ int							main(void)
 	init_player(&block);
 	read_map_max_size(&block);
 	create_map(&block, block.max_y, block.max_x);
+	create_map_priority(&block, block.max_y, block.max_x);
 	while ((get_next_line(STDIN, &block.line) > 0))
 	{
 		skip_line_plateau(&block.line);
 		read_map(&block, block.max_y, block.max_x, &block.map);
 		read_token_size(&block);
-		
+		player_step(&block);
+
 	}
 
 
