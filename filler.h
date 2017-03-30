@@ -63,7 +63,8 @@ void					read_map(t_block *block, int max_y, int max_x);
 void					read_token_size(t_block *block);
 void					player_step(t_block *block);
 
-
+void					create_priority(t_block *block, int max_y, int max_x);
+void					update_priority(t_block *block);
 
 
 

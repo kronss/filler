@@ -14,14 +14,13 @@
 
 void 						skip_line_plateau(char **line)
 {
-	if (ft_strstr(*line, "Plateau"))
+	if (!ft_strncmp(*line, "Plateau", 7))
 	{
 		ft_strdel(line);
 		get_next_line(STDIN, line);
-		ft_strdel(line);
 	}
-	// get_next_line(STDIN, line);
-	// ft_strdel(line);
+	ft_strdel(line);
+	
 }
 
 void						read_map(t_block *block, int max_y, int max_x)

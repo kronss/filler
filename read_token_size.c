@@ -12,16 +12,16 @@
 
 #include "filler.h"
 
-static	void				create_token(char ***token, int max_y, int max_x)
+static	void			create_token(char ***token, int ty, int max_x)
 {
-	char *line;
-	int j;
-	int i;
+	char				*line;
+	int					j;
+	int					i;
 
 	j = 0;
-	if (!(*token = (char **)malloc(sizeof(char *) * (max_y + 1))))
+	if (!(*token = (char **)malloc(sizeof(char *) * (ty + 1))))
 		perror("allocation error");
-	while (j < max_y)
+	while (j < ty)
 	{
 		get_next_line(STDIN, &line);
 		(*token)[j] = ft_strdup(line);
@@ -31,10 +31,10 @@ static	void				create_token(char ***token, int max_y, int max_x)
 	(*token)[j] = NULL;
 }
 
-void						read_token_size(t_block *block)
+void					read_token_size(t_block *block)
 {
-	int			i;
-	char		*line;
+	int					i;
+	char				*line;
 
 	i = 0;
 	get_next_line(STDIN, &line);
@@ -46,7 +46,6 @@ void						read_token_size(t_block *block)
 	block->tx = ft_atoi(&line[i]);
 	while (!ft_isdigit(line[i]))
 		i++;
-	// printf("y% d * x% d\n", y, x);
 	ft_strdel(&line);
 	create_token(&block->token, block->ty, block->tx);
 }
