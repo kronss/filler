@@ -52,6 +52,8 @@ void			update_priority(t_block *block)
 		j++;
 	}
 	block->priority_dot = MAX_INT;
+	block->step_y = 0;
+	block->step_x = 0;
 }
 
 void			create_priority(t_block *block, int max_y, int max_x)
