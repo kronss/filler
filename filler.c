@@ -48,7 +48,6 @@ static	void	read_map_max_size(t_block *block)
 	ft_strdel(&line);
 }
 
-
 static	void	create_map(t_block *block, int max_y, int max_x)
 {
 	int			j;

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void 						skip_line_plateau(char **line)
+void		skip_line_plateau(char **line)
 {
 	if (!ft_strncmp(*line, "Plateau", 7))
 	{
@@ -20,15 +20,14 @@ void 						skip_line_plateau(char **line)
 		get_next_line(STDIN, line);
 	}
 	ft_strdel(line);
-	
 }
 
-void						read_map(t_block *block, int max_y, int max_x)
+void		read_map(t_block *block, int max_y, int max_x)
 {
-	int j;
-	int i;
-	int k;
-	char *line;
+	int		j;
+	int		i;
+	int		k;
+	char	*line;
 
 	j = 0;
 	while (j < block->max_y)

@@ -60,11 +60,10 @@ static void		check_priority(t_block *block, int y, int x)
 	}
 	if (res < block->priority_dot)
 	{
-		block->priority_dot = res;	
+		block->priority_dot = res;
 		block->step_y = y;
 		block->step_x = x;
 	}
-	// return (res);
 }
 
 void			player_step(t_block *block)
@@ -72,12 +71,11 @@ void			player_step(t_block *block)
 	int			j;
 	int			i;
 	// int			res;
-
 	j = -1;
 	while (++j + (block->ty - 1) < block->max_y)
 	{
 		i = -1;
-		while (++i + (block->tx - 1) < block->max_x) 
+		while (++i + (block->tx - 1) < block->max_x)
 		{
 			if (insert_token(block, j, i))
 				check_priority(block, j, i);
@@ -85,17 +83,3 @@ void			player_step(t_block *block)
 	}
 	ft_printf("%d %d\n", block->step_y, block->step_x);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

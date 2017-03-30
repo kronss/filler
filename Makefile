@@ -12,7 +12,7 @@
 
 GCC = gcc
 
-# F = -Wall -Wextra -Werror
+F = -Wall -Wextra -Werror
 
 NAME = filler
 
@@ -22,8 +22,7 @@ OBJECT = 	filler.o \
 			read_map.o \
 			create_priority.o \
 			read_token_size.o \
-			player_step.o \
-			error_filler.o
+			player_step.o
 
 .PHONY: all clean fclean re bug debug
 

@@ -18,18 +18,18 @@ static	void	update(t_block *block, int y, int x)
 	int			i;
 	int			tmp;
 
-	block->priority[y][x] = MIN_INT; // del??
+	// block->priority[y][x] = MIN_INT; // del??
 	j = -1;
 	while (++j < block->max_y)
 	{
 		i = -1;
 		while (++i < block->max_x)
 		{
-			// if (block->map[j][i] != block->ai)
-			// {	
+			if (block->map[j][i] != block->ai)
+			{
 				tmp = ABS(j - y) + ABS(i - x);
 				block->priority[j][i] = ft_min(tmp, block->priority[j][i]);
-			// }
+			}
 		}
 	}
 }

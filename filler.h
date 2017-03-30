@@ -25,13 +25,6 @@
 **	step_y		- y cord wich be will print to filler_vm
 **	step_x		- x cord wich be will print to filler_vm
 **	line		- tmp line for save extra lines in function
-
-**	write
-**	read
-**	malloc
-**	free
-**	perror
-**	strerror
 */
 
 #ifndef FILLER_H
@@ -50,34 +43,21 @@ typedef	struct			s_block
 	int					max_y;
 	int					max_x;
 	char				**map;
-	int 				**priority;
-	int 				ty;
+	int					**priority;
+	int					ty;
 	int					tx;
 	char				**token;
-
-	int 				priority_dot;
+	int					priority_dot;
 	int					step_y;
 	int					step_x;
-
 	char				*line;
 }						t_block;
 
-
-
-
-// void			error_filler(char *str);
 void					skip_line_plateau(char **line);
 void					read_map(t_block *block, int max_y, int max_x);
 void					read_token_size(t_block *block);
 void					player_step(t_block *block);
-
 void					create_priority(t_block *block, int max_y, int max_x);
 void					update_priority(t_block *block);
-
-
-
-
-
-
 
 #endif
