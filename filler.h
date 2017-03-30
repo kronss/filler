@@ -11,6 +11,21 @@
 /* ************************************************************************** */
 
 /*
+**			explain the struct t_block
+**
+**	player		- my player (X or O)
+**	ai			- my oponent
+**	max_y		- max y map size
+**	max_x		- max x map size
+**	map 		- game map     (max_y * max_x)
+**	priority	- priority map (max_y * max_x)
+**  ty			- max token y size
+**  tx			- max token x size
+**	token		- token (ty * tx) wich contain piece (random_size *)
+**	step_y		- y cord wich be will print to filler_vm
+**	step_x		- x cord wich be will print to filler_vm
+**	line		- tmp line for save extra lines in function
+
 **	write
 **	read
 **	malloc
@@ -31,27 +46,18 @@
 typedef	struct			s_block
 {
 	char				player;
-	char				player1;
 	char				ai;
-	char				ai1;
-
 	int					max_y;
 	int					max_x;
 	char				**map;
 	int 				**priority;
-
-
 	int 				ty;
 	int					tx;
 	char				**token;
 
-
 	int					step_y;
 	int					step_x;
-
 	char				*line;
-
-
 }						t_block;
 
 

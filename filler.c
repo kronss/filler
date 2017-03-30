@@ -46,9 +46,6 @@ static	void	read_map_max_size(t_block *block)
 		i++;
 	block->max_x = ft_atoi(&line[i]);
 	ft_strdel(&line);
-	// get_next_line(STDIN, &line);
-	// ft_strdel(&line);
-	// printf("y %d x %d\n", block->max_y, block->max_x);
 }
 
 
@@ -105,7 +102,6 @@ int				main(void)
 
 
 		player_step(&block);
-		write(1, "clear\n", 6);
 	}
 	// if (res == -1)
 		// perror("error");

@@ -31,5 +31,5 @@ char			*ft_strjoin(char const *s1, char const *s2)
 			return (str);
 		}
 	}
-	return (0);
+	return (NULL);
 }

@@ -50,6 +50,8 @@ void			update_priority(t_block *block)
 	}
 }
 
+void			check_priority(t_block *block,)
+
 void			create_priority(t_block *block, int max_y, int max_x)
 {
 	int			j;
