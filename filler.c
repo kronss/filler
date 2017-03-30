@@ -68,10 +68,6 @@ static	void	create_map(t_block *block, int max_y, int max_x)
 int				main(void)
 {
 	t_block		block;
-	int			res;
-
-															// int x;
-															// int y;
 
 	init_player(&block);
 	read_map_max_size(&block);
@@ -82,29 +78,8 @@ int				main(void)
 		skip_line_plateau(&block.line);
 		read_map(&block, block.max_y, block.max_x);
 		read_token_size(&block);
-		
-
-															// y = 0;
-															// while (y < block.max_y)
-															// {
-															// 	printf("%s\n", block.map[y]);
-															// 	y++;
-															// }
-															// y = 0;
-															// while (y < block.ty)
-															// {
-															// 	printf("%s\n", block.token[y]);
-															// 	y++;
-															// }
 		update_priority(&block);
-		
-
-
-
 		player_step(&block);
 	}
-	// if (res == -1)
-		// perror("error");
-		// sleep(100);
 	return (0);
 }

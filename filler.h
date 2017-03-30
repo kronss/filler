@@ -55,8 +55,10 @@ typedef	struct			s_block
 	int					tx;
 	char				**token;
 
+	int 				priority_dot;
 	int					step_y;
 	int					step_x;
+
 	char				*line;
 }						t_block;
 

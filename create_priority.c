@@ -18,15 +18,18 @@ static	void	update(t_block *block, int y, int x)
 	int			i;
 	int			tmp;
 
-	block->priority[y][x] = -1; // del??
+	block->priority[y][x] = MIN_INT; // del??
 	j = -1;
 	while (++j < block->max_y)
 	{
 		i = -1;
 		while (++i < block->max_x)
 		{
-			tmp = ABS(j - y) + ABS(i - x);
-			block->priority[j][i] = ft_min(tmp, block->priority[j][i]);
+			// if (block->map[j][i] != block->ai)
+			// {	
+				tmp = ABS(j - y) + ABS(i - x);
+				block->priority[j][i] = ft_min(tmp, block->priority[j][i]);
+			// }
 		}
 	}
 }
@@ -48,9 +51,8 @@ void			update_priority(t_block *block)
 		}
 		j++;
 	}
+	block->priority_dot = MAX_INT;
 }
-
-void			check_priority(t_block *block,)
 
 void			create_priority(t_block *block, int max_y, int max_x)
 {
