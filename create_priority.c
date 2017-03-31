@@ -18,7 +18,7 @@ static	void	update(t_block *block, int y, int x)
 	int			i;
 	int			tmp;
 
-	// block->priority[y][x] = MIN_INT; // del??
+	block->priority[y][x] = 0;
 	j = -1;
 	while (++j < block->max_y)
 	{

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static	short			insert_token(t_block *block, int y, int x)
+static	short	insert_token(t_block *block, int y, int x)
 {
 	int			j;
 	int			i;
@@ -41,6 +41,13 @@ static	short			insert_token(t_block *block, int y, int x)
 	return ((match == 1) ? (1) : (0));
 }
 
+static	void	update_step(t_block *block, int res, int y, int x)
+{
+	block->priority_dot = res;
+	block->step_y = y;
+	block->step_x = x;
+}
+
 static void		check_priority(t_block *block, int y, int x)
 {
 	int			j;
@@ -53,24 +60,16 @@ static void		check_priority(t_block *block, int y, int x)
 	{
 		i = -1;
 		while (++i < block->tx)
-		{
-			// if (block->token)
-				res += block->priority[j + y][i + x];
-		}
+			res += block->priority[j + y][i + x];
 	}
-	if (res < block->priority_dot)
-	{
-		block->priority_dot = res;
-		block->step_y = y;
-		block->step_x = x;
-	}
+	(res < block->priority_dot) ? update_step(block, res, y, x) : 0;
 }
 
 void			player_step(t_block *block)
 {
 	int			j;
 	int			i;
-	// int			res;
+
 	j = -1;
 	while (++j + (block->ty - 1) < block->max_y)
 	{

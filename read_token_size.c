@@ -12,11 +12,10 @@
 
 #include "filler.h"
 
-static	void			create_token(char ***token, int ty, int max_x)
+static	void			create_token(char ***token, int ty)
 {
 	char				*line;
 	int					j;
-	int					i;
 
 	j = 0;
 	if (!(*token = (char **)malloc(sizeof(char *) * (ty + 1))))
@@ -47,5 +46,5 @@ void					read_token_size(t_block *block)
 	while (!ft_isdigit(line[i]))
 		i++;
 	ft_strdel(&line);
-	create_token(&block->token, block->ty, block->tx);
+	create_token(&block->token, block->ty);
 }

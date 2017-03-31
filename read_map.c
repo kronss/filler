@@ -30,14 +30,14 @@ void		read_map(t_block *block, int max_y, int max_x)
 	char	*line;
 
 	j = 0;
-	while (j < block->max_y)
+	while (j < max_y)
 	{
 		k = 0;
 		get_next_line(STDIN, &line);
 		while (!strchr(".OXox", line[k]))
 			k++;
 		i = 0;
-		while (i < block->max_x)
+		while (i < max_x)
 		{
 			(block->map)[j][i] = line[k];
 			(block->priority)[j][i] = MAX_INT;
